@@ -1,0 +1,65 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+.nav{
+    display: flex;
+   justify-content: space-between;
+   background-color: red;
+   height: 50px;
+   color: aliceblue;
+   align-items: center;
+   padding: 0 20px;
+
+}
+.nav-title{
+    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    color: #F1B24A;
+}
+.nav-link{
+ text-decoration: none;
+ font-size: 18px;
+ color:#FFFFFF;
+}
+.nav-name{
+    padding:   5px 15px;
+    margin-left: 15px;
+    color: #FFFFFF ;
+    text-decoration: none;
+       
+}
+.btn{
+    background-color: #9DC88D;
+    padding:   5px 15px;
+    margin-left: 15px;
+    color: #FFFFFF ;
+    text-decoration: none;
+}
+    </style>
+</head>
+<body> {% csrf_token %}
+    {%for event in event %}
+    <div class="home">
+        <div class="main">
+             <p class="event-name">{{event.Event_name}}</p><br>
+             <img src="{{event.Event_image.url}}" alt="" class="card-image"><br>
+             <p class="sponser-name">{{event.Sponser_name}}</p><br>
+             <p class="start-date">Start date:{{event.Start_date}}</p><br>
+             <p class="end-date">End date:{{event.End_date}}</p><br>
+             <p class="venue-address">Venue:{{event.Event_venue}}</p><br>
+             
+            <a href="{%url 'edit_event'   event.id%}"><button class="right">Book Event</button></a></td>
+        
+             {%endfor%}
+         </div>
+         
+    </div>
+    
+</body>
+</html>

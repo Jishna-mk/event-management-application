@@ -1,0 +1,148 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Home</title>
+    <style>
+.nav{
+    display: flex;
+   justify-content: space-between;
+   background-color: rgb(137, 41, 128);
+   height: 50px;
+   color: aliceblue;
+   align-items: center;
+   padding: 0 20px;
+
+}
+.nav-title{
+    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    color: #F1B24A;
+}
+.nav-link{
+ text-decoration: none;
+ font-size: 18px;
+ color:#FFFFFF;
+}
+.nav-name{
+    padding:   5px 15px;
+    margin-left: 15px;
+    color: #FFFFFF ;
+    text-decoration: none;
+       
+}
+.btn{
+    background-color: #e6c0d9;
+    padding:   5px 15px;
+    margin-left: 15px;
+    color: #FFFFFF ;
+    text-decoration: none;
+    
+}
+table {
+  width: 70%;
+  margin-top: 30px;
+  margin-right: 40px;
+  
+}
+
+th {
+  height: 30px;
+  padding: 15px;
+  text-align: left;
+  color: rgb(112, 39, 39);
+  background-color: rgb(183, 133, 176);
+  
+}
+td {
+  padding: 15px;
+  text-align: left;
+  color: rgb(73, 65, 128);
+  background-color: rgb(250, 246, 246);
+
+}
+/* .first{
+    display: flex;
+    background-color: #dce1e3;
+    margin:50px;
+    padding: 20px;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+} */
+.right{
+    background-color: rgb(176, 138, 192);
+    justify-content: space-between;
+    border: violet;
+    color: whitesmoke;
+
+}
+.card-image{
+    height: 100px;
+    width: 100px;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a class="nav-title">EVENT MANAGEMENT</a>
+        <div class="second-nav">
+            <a href="{%url 'add_event'%}" class="nav-link"><button>Service Provider</button></a>
+            <a href="#" class="nav-name">{{request.user.username}}</a>
+            <a href="{%url 'signout'%}" class="nav-name btn">Logout</a><br>
+        </div>
+    </div>
+   
+<div class="first">
+    <!-- <img src="{{event.Event_image.url}}" alt="nature"> -->
+    <!-- <p>{{blog.blog_image.url}}</p> -->
+
+   <div class="main">
+   <table border="1">
+    <tr> 
+        <th>Event name</th>
+        <th>sponser name</th>
+        <th>start date</th>
+        <th>End date</th>
+        <th>Venue</th>
+        <th>Type</th>
+        <th>image</th>
+        <th>detail</th>
+        <th>Activity</th>
+        <th>Delete event</th>    
+    </tr>
+    {%for event in events %}
+    <tr>
+          
+   <td><p class="event-name">{{event.Event_name}}</p><br></td>
+    <td><p class="sponser-name">{{event.Sponser_name}}</p><br></td>
+    <td><p class="start-date">Start date:{{event.Start_date}}</p><br></td>
+    <td><p class="end-date">End date:{{event.End_date}}</p><br></td>
+    <td><p class="venue-address">Venue:{{event.Event_venue}}</p><br></td>
+    <td><p class="event-type">{{event.Event_type}}</p><br></td>
+    <td><img src="{{event.Event_image.url}}" alt="" class="card-image"><br></td>
+    
+    <td><p class="para">{{event.Event_detail}}</p></td>
+    
+    
+    <!-- <div class="right"> -->
+        
+        <td><a href="{%url 'edit_event'   event.id%}"><button class="right">Edit</button></a></td>
+        <td><a href="{%url 'delete_event' event.id%}" onclick="return confirm('Are you sure want to delete?')"><i class="material-icons">delete</i></a></td>
+    <!-- </div> -->
+    </tr>
+    {%endfor%}
+
+   
+</table>
+</div>
+</div>
+
+</body>
+</html>
