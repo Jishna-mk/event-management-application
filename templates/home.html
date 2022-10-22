@@ -41,18 +41,36 @@
     color: #FFFFFF ;
     text-decoration: none;
 }
+.home{
+    /* margin-top: .5cm; */
+    
+     width: 300px;
+    height: 400px;
+    display: block;
+    border: 1px solid gray;
+    padding: 20px;
+    background-color:#c5ddb9 ;
+}
+.main{
+    margin-left: 15px;
+}  
+.main img{
+    height: 200px;
+    width: 200px;
+}
+
     </style>
 </head>
 <body> {% csrf_token %}
     {%for event in event %}
-    <div class="home">
+     <div class="home">
         <div class="main">
-             <p class="event-name">{{event.Event_name}}</p><br>
-             <img src="{{event.Event_image.url}}" alt="" class="card-image"><br>
-             <p class="sponser-name">{{event.Sponser_name}}</p><br>
-             <p class="start-date">Start date:{{event.Start_date}}</p><br>
-             <p class="end-date">End date:{{event.End_date}}</p><br>
-             <p class="venue-address">Venue:{{event.Event_venue}}</p><br>
+             <p class="event-name">{{event.Event_name}}</p>
+             <img src="{{event.Event_image.url}}" alt="" class="card-image">
+             <p class="sponser-name">{{event.Sponser_name}}</p>
+             <p class="start-date">Start date:{{event.Start_date}}</p>
+             <p class="end-date">End date:{{event.End_date}}</p>
+             <p class="venue-address">Venue:{{event.Event_venue}}</p>
              
             <a href="{%url 'edit_event'   event.id%}"><button class="right">Book Event</button></a></td>
         
