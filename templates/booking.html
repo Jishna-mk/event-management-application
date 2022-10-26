@@ -1,3 +1,4 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Your Bookings</h1>
     {%for event in event %}
     <div class="home">
        <div class="main">
@@ -20,6 +22,7 @@
            <a href="{%url 'edit_event'   event.id%}"><button class="right">CancelEvent</button></a></td>
        
        </div>
+    </div>   
     {%endfor%}
 
 </body>
