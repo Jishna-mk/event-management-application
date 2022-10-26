@@ -88,4 +88,18 @@ def delete_event(request,aid):
     Event=EventList.objects.get(id=aid)
     Event.delete()
     messages.info(request,"successfully deleted")
-    return redirect("home")      
+    return redirect("home")
+
+def book_event(request,aid):
+    form=EventListForm()
+    if request.method=="POST":
+        form=EventListForm(request.POST,request.FILES)
+        if form.is_valid():
+            form_data=form.save()
+            form_data.save()
+            messages.info(request,"Booking Confirmed")
+            return redirect("home")
+        else:
+            messages.info(request,"Booking Not Confirmed!")   
+
+    return render(request,"booking.html",{"Add_form":form})
