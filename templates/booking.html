@@ -46,7 +46,7 @@ h1{
 
 } 
 body{
-    background-color: rgb(205, 222, 221);
+    background-color: rgb(191, 220, 217);
 }   
     </style>
 </head>
@@ -63,7 +63,7 @@ body{
             <p class="end-date">End date:{{event.End_date}}</p>
             
             
-           <a href="{%url 'edit_event'   event.id%}"><button class="right">CancelEvent</button></a></td>
+           <a href="{%url 'cancel'  event.id%}"onclick="return confirm('Are you sure want to cancel the event?')"><button class="right">CancelEvent</button></a></td>
        
        </div>
     </div>

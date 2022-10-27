@@ -69,9 +69,12 @@ def signout(request):
     logout(request)
     return redirect("signin")
 
+def cancel(request,aid):
+    Event=EventList.objects.get(id=aid)
+    Event.delete()
+    messages.info(request," canceled successfully")
+    return redirect("my_bookings")
 
 
-def book_event(request,aid):
-    booked_event=EventList.objects.filter(Sponser_name=request.user.username)
-    return render(request,"booking.html",{"book_event":booked_event})    
+  
 

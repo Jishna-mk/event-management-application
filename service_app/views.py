@@ -102,3 +102,8 @@ def my_bookings(request):
     booked_list=BookedList.objects.filter(User_name=request.session["username"])
     return render(request,"booking.html",{"bookedlist":booked_list})
     
+def cancel(request,aid):
+    Event=EventList.objects.get(id=aid)
+    Event.delete()
+    messages.info(request,"canceled successfully")
+    return redirect("my_bookings")
