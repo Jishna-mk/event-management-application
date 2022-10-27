@@ -69,11 +69,7 @@ def signout(request):
     logout(request)
     return redirect("signin")
 
-def cancel(request,aid):
-    Event=EventList.objects.get(id=aid)
-    Event.delete()
-    messages.info(request," canceled successfully")
-    return redirect("my_bookings")
+
 
 
   
