@@ -9,5 +9,9 @@ urlpatterns = [
     path("add_event",views.add_event,name="add_event"),
     path("edit_event/<int:aid>",views.edit_event,name="edit_event"),
     path("delete_event/<int:aid>",views.delete_event,name="delete_event"),
+    path("book_event/<int:aid>",views.book_event,name="book_event")
+    
+
+
    
 ]

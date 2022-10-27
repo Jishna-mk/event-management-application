@@ -72,18 +72,6 @@ def signout(request):
 
 
 def book_event(request,aid):
-    # form=EventListForm()
-    # if request.method=="POST":
-        booked_event=EventList.objects.filter(User_name=request.user.username)
-        print(booked_event)
-        # form=EventListForm(request.POST,request.FILES)
-        # if form.is_valid():
-        #     form_data=form.save()
-        #     form_data.save()
-        #     messages.info(request,"Booking Confirmed")
-        #     return redirect("home")
-        # else:
-        #     messages.info(request,"Booking Not Confirmed!")   
-
-        return render(request,"booking.html",{"book_event":booked_event})    
+    booked_event=EventList.objects.filter(Sponser_name=request.user.username)
+    return render(request,"booking.html",{"book_event":booked_event})    
 
