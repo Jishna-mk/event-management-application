@@ -3,6 +3,7 @@ from email import message
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from event_app.forms import UserAddForm
+from event_app.models import BookedList
 from.forms import EventListForm 
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
@@ -91,6 +92,13 @@ def delete_event(request,aid):
     return redirect("home")
 
 def book_event(request,aid):
-    booked_event=EventList.objects.filter(Sponser_name=request.user.username)
-    return render(request,"booking.html",{"book_event":booked_event})    
-
+    Event=EventList.objects.get(id=aid)
+    print(request.session["username"])
+    b_instance=BookedList(Event_name=Event.Event_name,Sponser_name=Event.Sponser_name,Start_date=Event.Start_date,End_date=Event.End_date,User_name=request.session["username"])
+    b_instance.save()
+    return redirect('my_bookings')
+        
+def my_bookings(request):
+    booked_list=BookedList.objects.filter(User_name=request.session["username"])
+    return render(request,"booking.html",{"bookedlist":booked_list})
+    
