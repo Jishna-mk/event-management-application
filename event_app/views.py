@@ -74,7 +74,7 @@ def signout(request):
 def book_event(request,aid):
     # form=EventListForm()
     # if request.method=="POST":
-        booked_event=BookedList.objects.filter(User_name=request.user.username)
+        booked_event=EventList.objects.filter(User_name=request.user.username)
         print(booked_event)
         # form=EventListForm(request.POST,request.FILES)
         # if form.is_valid():
