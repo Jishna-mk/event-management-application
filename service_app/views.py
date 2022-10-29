@@ -8,6 +8,7 @@ from.forms import EventListForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from.models import EventList
+from event_app import models
 
 
 # Create your views here
@@ -93,7 +94,6 @@ def delete_event(request,aid):
 
 def book_event(request,aid):
     Event=EventList.objects.get(id=aid)
-    print(request.session["username"])
     b_instance=BookedList(Event_name=Event.Event_name,Sponser_name=Event.Sponser_name,Start_date=Event.Start_date,End_date=Event.End_date,User_name=request.session["username"])
     b_instance.save()
     return redirect('my_bookings')
