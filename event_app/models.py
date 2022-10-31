@@ -10,6 +10,7 @@ class BookedList(models.Model):
     Sponser_name=models.CharField(max_length=200)
     Start_date=models.CharField(max_length=10)
     End_date=models.CharField(max_length=10)
+    Event_image=models.ImageField(upload_to="events")
 
 
     

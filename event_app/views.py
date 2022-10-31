@@ -75,3 +75,8 @@ def book_event(request,aid):
     booked_event=EventList.objects.filter(Sponser_name=request.user.username)
     return render(request,"booking.html",{"book_event":booked_event})    
 
+def cancel_event(request,aid):
+    item = EventList.objects.get(id=aid)
+    item.delete()
+    messages.info(request, "Event canceled")
+    return redirect("book_event")

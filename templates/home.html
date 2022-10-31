@@ -127,22 +127,7 @@ body{
         
     </div>
     {%endfor%}
-    {%for event in event %}
-     <div class="home">
-        <div class="main">
-             <p class="event-name">{{event.Event_name}}</p>
-             <img src="{{event.Event_image.url}}" alt="" class="card-image">
-             <p class="sponser-name">{{event.Sponser_name}}</p>
-             <p class="start-date">Start date:{{event.Start_date}}</p>
-             <p class="end-date">End date:{{event.End_date}}</p>
-             <p class="venue-address">Venue:{{event.Event_venue}}</p>
-             
-            <a href="{%url 'book_event' event.id%}"><button class="right">Book Event</button></a></td>
-        
-        </div>
-        
-    </div>
-    {%endfor%}
+    
 </div>
     
 </body>

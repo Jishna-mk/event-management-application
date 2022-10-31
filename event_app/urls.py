@@ -7,6 +7,7 @@ urlpatterns = [
     path("signup",views.signup,name="signup"),
     path("signin",views.signin,name="signin"),
     path("signout",views.signout,name="signout"),
-    path("book_event/<int:aid>",views.book_event,name="book_event")
+    path("book_event/<int:aid>",views.book_event,name="book_event"),
+    path("cancel_event/<int:aid>",views.cancel_event,name="cancel_event")
     
 ]
