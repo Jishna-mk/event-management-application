@@ -15,8 +15,8 @@ from .models import BookedList
 
 
 def first(request):
-    events=EventList.objects.all()
-    return render(request, "home.html",{"event":events})
+    event=EventList.objects.all()
+    return render(request, "home.html",{"event":event})
 
 
 def signup(request):

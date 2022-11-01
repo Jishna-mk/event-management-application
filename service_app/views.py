@@ -91,6 +91,6 @@ def delete_event(request,aid):
     return redirect("home")
 
 def book_event(request,aid):
-    booked_event=EventList.objects.filter(Sponser_name=request.user.username)
-    return render(request,"booking.html",{"book_event":booked_event})    
+    bookedlist=EventList.objects.filter(Sponser_name=request.user.username)
+    return render(request,"booking.html",{"book_event":bookedlist})    
 
